@@ -18,12 +18,16 @@ request("http://abcnews.go.com/", function(error, response, html) {
   // Select each element in the HTML body from which you want information.
   // NOTE: Cheerio selectors function similarly to jQuery's selectors,
   // but be sure to visit the package's npm page to see how it works
-  $("ul.headlines-ul").each(function(i, element) {
+  $("ul.headlines-ul a").each(function(i, element) {
     // console.log($(element).children().children(".headlines-li-div").children("h1").children("a").attr("href"));
 
-    var link = $(element).children().children(".headlines-li-div").children("h1").children("a").attr("href")
+
+    //var link = $(element).children().children(".headlines-li-div").children("h1").children("a").attr("href")
     //looks like it works!...
-    var title = $(element).children().children(".headlines-li-div").children("h1").children("a").text();
+    //var title = $(element).children().children(".headlines-li-div").children("h1").children("a.black-ln").text();
+
+    var link = $(element).attr('href');
+    var title = $(element).text();
 
 
     //is working but has extra characters
