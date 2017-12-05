@@ -1,0 +1,27 @@
+{
+  "name": "news-to-me",
+  "version": "1.0.0",
+  "description": "news scraper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyarber2/news-to-me.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyarber2/news-to-me/issues"
+  },
+  "homepage": "https://github.com/kyarber2/news-to-me#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.13.6",
+    "request": "^2.83.0"
+  }
+}
