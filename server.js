@@ -1,82 +1,31 @@
-// Students: Using this template, the cheerio documentation,
-// and what you've learned in class so far, scrape a website
-// of your choice, save information from the page in a result array, and log it to the console.
+var express = require('express');
+var mongoose = require('mongoose');
+var exphbs = require("express-handlebars");
+var bodyParser = require("body-parser");
 
-var cheerio = require("cheerio");
-var request = require("request");
+var PORT = process.env.PORT || 3000;
 
-// Make a request call to grab the HTML body from the site of your choice
-request("http://abcnews.go.com/", function(error, response, html) {
+var app = express()
 
-  // Load the HTML into cheerio and save it to a variable
-  // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-  var $ = cheerio.load(html);
+var routes = require('./routes/index.js')
 
-  // An empty array to save the data that we'll scrape
-  var results = [];
+app.use(express.static("public"))
 
-  // Select each element in the HTML body from which you want information.
-  // NOTE: Cheerio selectors function similarly to jQuery's selectors,
-  // but be sure to visit the package's npm page to see how it works
-  $("ul.headlines-ul a").each(function(i, element) {
-    // console.log($(element).children().children(".headlines-li-div").children("h1").children("a").attr("href"));
+app.engine("handlebars", exphbs({ defaultLayout: "main"}))
+app.set("view engine", "handlebars");
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-    //var link = $(element).children().children(".headlines-li-div").children("h1").children("a").attr("href")
-    //looks like it works!...
-    //var title = $(element).children().children(".headlines-li-div").children("h1").children("a.black-ln").text();
+app.use(routes)
 
-    var link = $(element).attr('href');
-    var title = $(element).text();
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_q3j9zkk3:e3kb7aduss4goh3p1sseevddab@ds129776.mlab.com:29776/heroku_q3j9zkk3"
 
-
-    //is working but has extra characters
-    //var title = $(element).children().children(".headlines-li-div").text();
-    // Save these results in an object that we'll push into the results array we defined earlier
-    results.push({
-      title: title,
-      link: link
-    });
-  });
-
-  // Log the results once you've looped through each of the elements found with cheerio
-  console.log(results);
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
 });
 
-
-// //original code
-// // Students: Using this template, the cheerio documentation,
-// // and what you've learned in class so far, scrape a website
-// // of your choice, save information from the page in a result array, and log it to the console.
-
-// var cheerio = require("cheerio");
-// var request = require("request");
-
-// // Make a request call to grab the HTML body from the site of your choice
-// request("http://www.nytimes.com", function(error, response, html) {
-
-//   // Load the HTML into cheerio and save it to a variable
-//   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-//   var $ = cheerio.load(html);
-
-//   // An empty array to save the data that we'll scrape
-//   var results = [];
-
-//   // Select each element in the HTML body from which you want information.
-//   // NOTE: Cheerio selectors function similarly to jQuery's selectors,
-//   // but be sure to visit the package's npm page to see how it works
-//   $("h2.story-heading").each(function(i, element) {
-
-//     var link = $(element).children().attr("href");
-//     var title = $(element).children().text();
-
-//     // Save these results in an object that we'll push into the results array we defined earlier
-//     results.push({
-//       title: title,
-//       link: link
-//     });
-//   });
-
-//   // Log the results once you've looped through each of the elements found with cheerio
-//   console.log(results);
-// });
+app.listen(PORT, function() {
+  console.log(`Listening on port: ${PORT}`)
+})

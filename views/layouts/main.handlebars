@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>news-to-me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral SC">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+
+		<script src="https://code.jquery.com/jquery.js"></script>
+        <!-- jquery form validator -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+		<script src="/assets/js/index.js"></script>
+        <script src="/assets/js/donate.js"></script>
+	</head>
+
+	<body>
+  <!--nav bar-->
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="nav navbar-nav navbar-left">
+            <a id="flowerHome" href="/">Home</a>            
+          </div>        
+        </div>
+        <div class="navbar-center" id="navbarText"> 
+          <div id="teamName">
+            SCRAPE, SCRAPER, SCRAPY
+          </div>
+         
+          Let's Scrape Some News!
+        </div>
+          <div class="nav navbar-nav navbar-right">
+            <button id="LoginButton" class="btn btn-primary btn-margin navbar-btn">Log In
+            </button>
+            <button id="LogoutButton" class="btn btn-primary btn-margin navbar-btn">Log Out
+            </button>
+          </div>
+        </div>       
+    </nav>
+  <hr>
+
+<div id="content">
+	
+		{{{ body }}}
+
+</div>
+<!-- FOOTER -->
+<br>
+    <footer class="footer" id="footer">
+        <div class="container social-links">
+            <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
+            <span class="icon-facebook">
+          <picture>
+            <source srcset="/assets/images/facebook.png" media="(min-width: 600px)">
+            <img src="/assets/images/facebook.png" alt="Facebook">
+          </picture>
+        </span>
+            <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
+            <span class="icon-instagram">
+          <picture>
+            <source srcset="/assets/images/instagram.png" media="(min-width: 600px)">
+            <img src="/assets/images/instagram.png" alt="instagram">
+          </picture>
+        </span>
+            <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
+            <span class="icon-facebook">
+          <picture>
+            <source srcset="/assets/images/twitter.png" media="(min-width: 600px)">
+            <img src="/assets/images/twitter.png" alt="twitter">
+          </picture>
+        </span>
+            <p class="text-muted">Copyright &copy; 2017 Katie! Inc.</p>
+        </div>
+    </footer>
+	</body>
+</html>
