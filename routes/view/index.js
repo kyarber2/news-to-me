@@ -1,10 +1,7 @@
-var router = require("express").Router()
-var helper = require("../utilities/helpers")
+var router = require("express").Router();
+var homeController = require("../../controllers/homeController");
 
 
-router.get('/', function(request, response) {
-	var articles = helper.getArticles()
-	response.render('home', { articles })
-})
+router.get('', homeController.getArticles);
 
 module.exports = router;

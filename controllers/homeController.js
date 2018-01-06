@@ -6,8 +6,8 @@ var request = require("request");
 // Make a request call to grab the HTML body from a website
 
 module.exports = {
- getArticles: function() { 
-	request("http://abcnews.go.com/", function(error, response, html) {
+ getArticles: function(req,res) { 
+	return request("http://abcnews.go.com/", function(error, response, html) {
 	  // Load the HTML into cheerio and save it to a variable
 	  // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
 	  var $ = cheerio.load(html);
@@ -30,8 +30,7 @@ module.exports = {
 
 	  // Log the results
 		  console.log(articles);
-		  return articles;
-		  res.render('articles', {articles: articles});
+		  res.render('home', {articles: articles});
 		})
 	}
 }
